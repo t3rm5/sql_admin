@@ -1,3 +1,7 @@
+--
+-- mysql_admin file for MySQL administration
+-- Do not execute!
+
 -- Get all tables sizes
 
 SELECT TABLE_SCHEMA, TABLE_NAME, 
