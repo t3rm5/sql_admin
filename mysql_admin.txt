@@ -1,0 +1,11 @@
+-- Get all tables sizes
+
+SELECT TABLE_SCHEMA, TABLE_NAME, 
+       round(((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024), 2) As "Approximate size (MB)" 
+FROM information_schema.TABLES
+WHERE TABLE_SCHEMA NOT IN ('mysql', 'information_schema', 'performance_schema')
+	order by round(((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024), 2) asc;
+
+
+-- When you have enabled or disabled InnoDB file-per-table tablespaces, you can issue an ALTER TABLE command to move a table from the global tablespace to its own tablespace 
+ALTER TABLE table_name ENGINE=InnoDB, ALGORITHM=COPY; 
